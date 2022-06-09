@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# dataset
+seeds/marketing_sample_for_amazon_in-ecommerce_products__20190701_20190731__30k_data.csv
+seeds/data-cat.js
+seeds/csvtojson.js
