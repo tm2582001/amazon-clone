@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const app = express();
 
-const Category = require('./models/category/category.model');
+const Product = require('./models/product/product.models');
 
 const searchItemsRoute = require('./routes/search/search.routes');
 const homeRoute = require('./routes/home/home.routes');
@@ -17,7 +17,7 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", async() => {
   try{
-    app.locals.cat = await Category.find({});
+    app.locals.cat = await Product.distinct('category');
   }catch(e){
     console.log(e);
   }

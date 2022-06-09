@@ -28,8 +28,9 @@
                             <img class="arrow-image" src="/images/sort-down-solid.svg" alt="">
                         </div>
                         <select class="search-options" name="cat" id="">
+                             <option selected="selected" value="All Category">All Category</option>
                             <% cat.map((cat)=>{ %>
-                            <option value="<%= cat.category %>" ><%= cat.category %> </option>
+                            <option value="<%= cat %>" ><%= cat %> </option>
                             <% }) %>  
                             <!-- <option selected="selected" value="search-alias=alexa-skills"> Hello</option>
                             <option value="Hellosdsdsdsdds">Hellosdsdsdsdds</option>
