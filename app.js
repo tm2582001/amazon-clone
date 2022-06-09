@@ -3,7 +3,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 const app = express();
 
+const Category = require('./models/category/category.model');
+
 const searchItemsRoute = require('./routes/search/search.routes');
+const homeRoute = require('./routes/home/home.routes');
 
 const catchError = require('./middleware/catch-error/cath-error.middleware');
 
@@ -12,7 +15,12 @@ mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
+db.once("open", async() => {
+  try{
+    app.locals.cat = await Category.find({});
+  }catch(e){
+    console.log(e);
+  }
   console.log("database connected");
 });
 
@@ -23,9 +31,7 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use(express.static(path.join(__dirname,'public')));
 
-app.get('/',(req,res)=>{
-    res.render('pages/home')
-});
+app.use('/',homeRoute);
 
 app.use('/search',searchItemsRoute);
 
@@ -33,6 +39,7 @@ app.use(catchError);
 
 const port = process.env.PORT || 8080
 
+
 app.listen(port,()=>{
-    console.log(`Server running on ${port}`)
+  console.log(`Server running on ${port}`)
 });
