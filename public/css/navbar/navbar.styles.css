@@ -96,7 +96,7 @@
     border-radius: 4px 0 0 4px;
     align-items: center;
     padding: 1px 4px;
-    min-width: 40px;
+    /* min-width: 40px; */
     background: rgb(243,243,243);
 }
 
@@ -108,6 +108,7 @@
 }
 
 .selection-text{
+    white-space: nowrap;
     color: #555;
     font-size: 14px;
 }
@@ -119,6 +120,7 @@
 }
 
 .search-options{
+    cursor: pointer;
     position: absolute;
     left: 0;
     top: 0;
