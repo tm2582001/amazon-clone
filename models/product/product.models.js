@@ -3,7 +3,8 @@ const {Schema, model} = require('mongoose');
 const productSchema = new Schema({
     name:{
         type: String,
-        required: true
+        required: true,
+        index: true
     },
     price:{
         type: Number,
@@ -17,8 +18,12 @@ const productSchema = new Schema({
     },
     category:[{
         type: String,
-        required: true
+        required: true,
+        // index:true LEAVING THIS BEACUAE DURING TEXT SEARCH MONGOOSE SEARCH IN BOTH INDEXES
     }]
 });
+
+productSchema.index({name:'text'})
+// productSchema.index({category:'text'})
 
 module.exports = model('Product',productSchema);

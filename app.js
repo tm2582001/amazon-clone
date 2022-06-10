@@ -18,6 +18,8 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", async() => {
   try{
     app.locals.cat = await Product.distinct('category');
+    // const wtf = await Product.count({name:'Dekor Classic Hands-Free Diaper Pail, Sage'});
+    // console.log(wtf);
   }catch(e){
     console.log(e);
   }
