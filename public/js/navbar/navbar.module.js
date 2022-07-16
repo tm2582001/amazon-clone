@@ -1,4 +1,5 @@
-import {id,classes} from '../index.module.js';
+import id from '../selectors/id-selector.module.js';
+import classes from '../selectors/class-selector.module.js';
 
 const navSearch = classes('nav-search')[0];
 const searchOption = classes('search-options')[0];
