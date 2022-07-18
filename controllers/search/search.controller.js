@@ -1,7 +1,10 @@
 const Product = require('../../models/product/product.models');
 
-const searchItems = async (req,res,next)=>{
+const searchItems = async (req,res)=>{
     const {cat, search} = req.query;
+
+    if(!search||!cat) return res.redirect('/');
+
     let searchResult;
     const searchRegEx = new RegExp(search, 'i')
     
@@ -13,7 +16,10 @@ const searchItems = async (req,res,next)=>{
     }
 
     res.render('pages/search',{searchResult});
-    // -----full teaxt search
+
+
+    // !!!!-----full teaxt search  it also need indexing which is done in models file
+
     // if(cat === 'All Category'){
         // searchResult = await Product.find({$text:{$search:search}});
     // }else{

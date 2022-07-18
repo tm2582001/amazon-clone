@@ -6,6 +6,7 @@ const app = express();
 const Product = require('./models/product/product.models');
 
 const searchItemsRoute = require('./routes/search/search.routes');
+const searchItemsApiRoute = require('./routes/search/search-api.router');
 const homeRoute = require('./routes/home/home.routes');
 
 const catchError = require('./middleware/catch-error/cath-error.middleware');
@@ -38,6 +39,8 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/',homeRoute);
 
 app.use('/search',searchItemsRoute);
+
+app.use('/api/search',searchItemsApiRoute);
 
 app.use(catchError);
 

@@ -41,3 +41,21 @@ submitSearch.addEventListener('blur',()=>{
 
 
 
+const getSuggestion = async(e)=>{
+    try{
+        const searchTerm = e.target.value?.trim();
+        console.log(searchTerm);
+        if(searchTerm){
+            const res = await fetch(`/api/search?search=${searchTerm}&cat=All Category`);
+            if(res.ok){
+                const data = await res.json();
+                console.log(data);
+            }
+        }
+    }catch(e){
+        console.log(e);
+    }
+}
+
+
+navSearchField.addEventListener('input',getSuggestion);
