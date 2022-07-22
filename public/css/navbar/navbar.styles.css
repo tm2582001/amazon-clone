@@ -181,6 +181,7 @@
 
 
 .suggestion-box-warapper{
+    display: none;
     position: absolute;
     width: 100%;
     bottom: 0;
@@ -212,4 +213,9 @@
 
 .suggested-item:hover{
     background-color: #eee;
+}
+
+.suggestion-text{
+    white-space: nowrap;
+    overflow: hidden;
 }
