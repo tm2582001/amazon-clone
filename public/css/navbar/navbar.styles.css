@@ -215,6 +215,10 @@
     background-color: #eee;
 }
 
+.selected-suggestion-item{
+    background-color: #eee;
+}
+
 .suggestion-text{
     white-space: nowrap;
     overflow: hidden;
