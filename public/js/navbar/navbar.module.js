@@ -1,4 +1,3 @@
-import id from '../selectors/id-selector.module.js';
 import classes from '../selectors/class-selector.module.js';
 import updateSuggestionText from './suggestion.module.js';
 import { showSuggestionBox, hideSuggestionBox,removeSearchFieldListener,addSearchFieldListener } from './suggestion.module.js';
@@ -10,8 +9,13 @@ const selectionBox = classes('selection-box')[0];
 const navSearchField = classes('nav-search-field')[0];
 const searchButtonDiv = classes('search-button-div')[0];
 const submitSearch = classes('submit-search')[0];
+ 
 
-//todo--fix -- when we search using different category and then we go back the category show all but in reality it is on different category 
+window.addEventListener('load',()=>{
+    if(searchOption.value !== 'All Category'){
+        selectionText.textContent = searchOption.value;
+    }
+})
 
 searchOption.addEventListener('change',(e)=>{
     // console.log(e.target.value);

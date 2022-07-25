@@ -5,6 +5,7 @@ import query from '../selectors/query-selector.module.js';
 const navSearchField = classes('nav-search-field')[0];
 const suggestionBox = classes('suggestion-box')[0];
 const suggestionBoxWrapper = classes('suggestion-box-warapper')[0];
+const searchOption = classes('search-options')[0];
 
 const hideSuggestionBox = ()=>suggestionBoxWrapper.style.display = "none";
 const showSuggestionBox = ()=>suggestionBoxWrapper.style.display = "block";
@@ -13,7 +14,7 @@ const showSuggestionBox = ()=>suggestionBoxWrapper.style.display = "block";
 const changeSearchtext = (suggestions=[])=>{
     let currentIndex = 0;
     return (position)=>{
-        // console.log(currentIndex,suggestions);
+        
         if(!suggestions.length) return;
 
         if(position === "decrease"){
@@ -22,7 +23,6 @@ const changeSearchtext = (suggestions=[])=>{
             }else{
                 currentIndex--;
             }
-            console.log(currentIndex,suggestions);
         }
         
         if(position=== "increase"){
@@ -31,7 +31,6 @@ const changeSearchtext = (suggestions=[])=>{
             }else{
                 currentIndex++;
             }
-            console.log(currentIndex,suggestions);
         }
 
         const selectedSuggestion =  suggestions[currentIndex]
@@ -57,7 +56,6 @@ const addSearchFieldListener = ()=>{
             if(keyCode===40){
                 changeText("increase");
             }
-            console.log(e);
         }
     }
 }
@@ -65,13 +63,13 @@ const addSearchFieldListener = ()=>{
 const removeSearchFieldListener = ()=>navSearchField.onkeydown= null;
 
 
-const displaySuggestionText = (suggestions)=>{
-    console.log(suggestions);
+const displaySuggestionText = (suggestions,searchTerm,category)=>{
     suggestionBox.innerHTML = '';
     suggestions.map((suggestion)=>{
+        const searchIndex = searchTerm.length;
         suggestionBox.insertAdjacentHTML("beforeend",
             `<div class="suggested-item" role="button" aria-label="${suggestion._id}">
-                <span class="suggestion-text">${suggestion.name}</span>
+                <span class="suggestion-text">${suggestion.name?.substr(0,searchIndex)}<span class="bold-suggestion">${suggestion.name?.substr(searchIndex)}</span></span>
             </div>`
         )
     })
@@ -80,7 +78,7 @@ const displaySuggestionText = (suggestions)=>{
  
     for(let i=0;i<suggestionItem.length;i++){
         suggestionItem[i].onmousedown= (e)=>e.preventDefault();  //we can also use this.clickedElemnt = items and then check if this is clicked then doesn't close this
-        suggestionItem[i].onclick = ()=>window.location.href = `search?cat=All Category&search=${suggestions[i]?.name}`; 
+        suggestionItem[i].onclick = ()=>window.location.href = `search?cat=${category}&search=${suggestions[i]?.name}`; 
     }
 
 }
@@ -89,12 +87,14 @@ const displaySuggestionText = (suggestions)=>{
 const getSuggestion = async(e)=>{
     try{
         const searchTerm = e.target.value?.trimStart();
+        const category = searchOption.value;
         console.log(searchTerm);
         if(searchTerm){
-            const res = await fetch(`/api/search?search=${searchTerm}&cat=All Category`);
+            const res = await fetch(`/api/search?search=${searchTerm}&cat=${category}`);
             if(res.ok){
                 const data = await res.json();
-                displaySuggestionText(data);
+                console.log(data);
+                displaySuggestionText(data,searchTerm,category);
                 changeText = changeSearchtext([searchTerm,...data]);
             }
         }else{
