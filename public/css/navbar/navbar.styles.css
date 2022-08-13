@@ -15,7 +15,8 @@
     align-items: flex-start;
     padding: 10px 5px;
 }
-.amazon-logo:hover{
+
+.nav-hover:hover{
     outline: 1px solid #fff;
 }
 
@@ -37,10 +38,6 @@
     display: flex;
     align-items: center;
     padding: 10px 5px;
-}
-
-.location-selector:hover{
-    outline: 1px solid #fff;
 }
 
 .map-pin{
@@ -226,4 +223,89 @@
 
 .bold-suggestion{
     font-weight: 700;
+}
+
+.select-language{
+    margin: 0 5px;
+    padding: 0 7px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+.flag{
+    width: 25px;
+    height: 25px;
+}
+
+.nav-arrow{
+    width: 12px;
+    margin: 5px 3px;
+    height: 12px;
+}
+
+.nav-account-list{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 1px 5px 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-line-1{
+    margin: 0;
+    font-size: 13px;
+}
+
+.nav-line-2{
+    margin: 0 0 5px 0;
+    font-size: 15px;
+    font-weight: 500;
+    word-spacing: 1.5px;
+}
+
+.return-and-order{
+    color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5px;
+    justify-content: center;
+    cursor: pointer;
+} 
+
+.nav-cart{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 5px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.nav-cart-container{
+    position: relative;
+    width: 100%;
+}
+
+.nav-cart-count{
+    color: #f08804;
+    position: absolute;
+    right: auto;
+    left: 18px;
+    font-weight: 600;
+    top: -5px;
+}
+
+.nav-cart-icon{
+    width: 40px;
+    height: auto;
+}
+
+.nav-cart-text{
+    color: #fff;
+    margin: 0;
 }

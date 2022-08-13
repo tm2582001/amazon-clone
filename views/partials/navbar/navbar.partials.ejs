@@ -4,15 +4,15 @@
     <ul class="nav-bar-wrapper">
         <li class="nav-bar-item">
             <a href="/">
-                <div class="amazon-logo">
-                    <img class="amazon-logo-sprite" src="images/amazon-logo.png" alt="amazon-logo">
+                <div class="amazon-logo nav-hover">
+                    <img class="amazon-logo-sprite" draggable="false" src="images/amazon-logo.png" alt="amazon-logo">
                     <span class="suffix">.in</span>
                 </div>
             </a>
         </li>
         <li class="nav-bar-item">
-            <div class="location-selector">
-                <img class="map-pin" src="images/map-pin.svg" alt="map-pin">
+            <div class="location-selector nav-hover">
+                <img class="map-pin" draggable="false" src="images/map-pin.svg" alt="map-pin">
                 <div class="location-details">
                     <p class="address-indicator">Hello</p>
                     <p class="address-text">Select your address</p>
@@ -25,16 +25,13 @@
                     <div class="selection-box">
                         <div class="show-selection">
                             <span class="selection-text">All</span>
-                            <img class="arrow-image" src="/images/sort-down-solid.svg" alt="">
+                            <img class="arrow-image" draggable="false" src="/images/sort-down-solid.svg" alt="">
                         </div>
                         <select class="search-options" name="cat" id="">
                              <option selected="selected" value="All Category">All Category</option>
                             <% cat.map((cat)=>{ %>
                             <option value="<%= cat %>" ><%= cat %> </option>
-                            <% }) %>  
-                            <!-- <option selected="selected" value="search-alias=alexa-skills"> Hello</option>
-                            <option value="Hellosdsdsdsdds">Hellosdsdsdsdds</option>
-                            <option value="Hello2">Hello2</option> -->
+                            <% }) %>
                         </select>
                     </div>
                     <div class="search-box-wrapper">
@@ -49,26 +46,42 @@
                         </div>
                         <div class="suggestion-box-warapper">
                             <div class="suggestion-box">
-                                <!-- <div class="suggested-item">
-                                    <span>Hello</span>
-                                </div> -->
-                                <!-- <div class="suggested-item">
-                                    <span>Hello</span>
-                                </div>
-                                <div class="suggested-item">
-                                    <span>Hello</span>
-                                </div>
-                                <div class="suggested-item">
-                                    <span>Hello</span>
-                                </div>
-                                <div class="suggested-item">
-                                    <span>Hello</span>
-                                </div> -->
                             </div>
                         </div>
                     </div>
-                 
                 </form>
+            </div>
+        </li>
+        <li class="nav-bar-item">
+            <div class="select-language nav-hover">
+                <img src="/images/Flag_of_India.svg" class="flag" draggable="false" alt="Indian Flag">
+                <img class="nav-arrow" draggable="false" src="/images/sort-down-solid.svg" alt="">
+            </div>
+        </li>
+        <li class="nav-bar-item">
+            <div class="nav-account-list nav-hover">
+                <div class="account-details">
+                    <p class="nav-line-1">Hello, Sign in</p>
+                    <p class="nav-line-2">Account & List</p>
+                </div>
+                <img class="nav-arrow" draggable="false" src="/images/sort-down-solid.svg" alt="">
+            </div>
+        </li>
+
+        <li class="nav-bar-item">
+            <div class="return-and-order nav-hover">
+                <p class="nav-line-1">Returns</p>
+                <p class="nav-line-2">& Orders</p>
+            </div>
+        </li>
+
+        <li class="nav-bar-item">
+            <div class="nav-cart nav-hover">
+                <div class="nav-cart-container">
+                    <span class="nav-cart-count">0</span>
+                    <img class="nav-cart-icon" src="/images/cart.png" draggable="false" alt="Cart Image">
+                </div>
+                <p class="nav-line-2 nav-cart-text">Cart</p>
             </div>
         </li>
     </ul>
