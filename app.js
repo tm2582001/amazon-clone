@@ -8,6 +8,7 @@ const Product = require('./models/product/product.models');
 const searchItemsRoute = require('./routes/search/search.routes');
 const searchItemsApiRoute = require('./routes/search/search-api.router');
 const homeRoute = require('./routes/home/home.routes');
+const registerRoute = require('./routes/register/register.routes');
 const pageNotFoundRoute = require('./routes/page-not-found/page-not-found.routes');
 const pageNotFoundApiRoute = require('./routes/page-not-found/page-not-found-api.routes');
 
@@ -35,12 +36,15 @@ db.once("open", async() => {
 app.set('view engine','ejs');
 app.set("views", path.join(__dirname, "views"));
 
-
 app.use(express.static(path.join(__dirname,'public')));
+
+
 
 app.use('/',homeRoute);
 
 app.use('/search',searchItemsRoute);
+
+app.use('/register', registerRoute);
 
 app.use('/api/search',searchItemsApiRoute);
 
