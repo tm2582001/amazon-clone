@@ -6,21 +6,21 @@
     <form action="/register" method="post">
       <div>
         <label for="">Your Name</label>
-        <input type="text" name="" id="" />
+        <input type="text" name="user[name]" id="" />
       </div>
       <div>
         <label for="">Mobile Number</label>
         <span>
-          <input type="tel" name="" id="" />
+          <input type="tel" name="user[mobileNumber]" id="" />
         </span>
       </div>
       <div>
         <label for="">Email (optional)</label>
-        <input type="email" name="" id="" />
+        <input type="email" name="user[email]" id="" />
       </div>
       <div>
         <label for="">Password</label>
-        <input type="password" name="" id="" />
+        <input type="password" name="user[password]" id="" />
       </div>
       <div><i>i</i> <span>Passwords must be at least 6 characters.</span></div>
       <p>
@@ -28,7 +28,7 @@
         security notifications via text message from Amazon. Message and data
         rates may apply.
       </p>
-      <button type="submit"  >Continue</button>
+      <button type="submit">Continue</button>
     </form>
   </main>
 </div>

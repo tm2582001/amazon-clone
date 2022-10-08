@@ -1,9 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const registerForm = require('../../controllers/register/register-form.controller');
+const catchAsync = require('../../utils/catch-async/catch-async.util');
+const renderRegister = require('../../controllers/register/render-register.controller');
+const registerUser = require('../../controllers/register/resgister-user.controller');
 
 router.route('/')
-    .get(registerForm);
+    .get(renderRegister)
+    .post(catchAsync(registerUser));
 
 
 
