@@ -20,6 +20,16 @@ const userSchema = new Schema({
   },
 });
 
+const userExist = async function(mobileNumber){
+  const foundUser = await this.findOne({mobileNumber});
+  console.log(foundUser);
+  return foundUser;
+}
+
+userSchema.static('userExist',userExist);
+
+// userSchema.statics.isValid = async function(){
+// }
 
 userSchema.pre("save", async function(next) {
     if(!this.isModified('password')) return next();
