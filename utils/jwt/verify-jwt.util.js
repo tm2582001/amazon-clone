@@ -12,4 +12,4 @@ const verifyJwt = (token)=>{
     }
 }
 
-export default verifyJwt;
+module.exports = verifyJwt;

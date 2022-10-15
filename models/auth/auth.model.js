@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+const createAuth = require('../../services/auth/create-auth.service');
 
 const authSchema = new Schema({
     id:{
@@ -15,15 +15,6 @@ const authSchema = new Schema({
     }
 });
 
-
-const createAuth = async function(user,password){
-    const hashPassword = password = await bcrypt.hash(password,12);
-    const newAuth = new this({
-        id:user,
-        password: hashPassword
-    }) ;
-    await newAuth.save();
-}
 
 authSchema.static('createAuth',createAuth);
 

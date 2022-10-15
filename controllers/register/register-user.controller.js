@@ -18,6 +18,11 @@ const registerUser = async (req,res)=>{
 
     if(!password) throw new ExpressError('Password is required',400);
 
+    if(email){
+        const isemail = await User.findUserByEmail(email);
+        if(isemail) throw new ExpressError('Email already exist',400);
+    }
+
     const isUser = await User.findUserByNumber(user.mobileNumber);
 
     if(isUser){

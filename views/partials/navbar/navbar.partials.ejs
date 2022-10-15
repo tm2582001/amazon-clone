@@ -61,7 +61,7 @@
         <li class="nav-bar-item">
             <div class="nav-account-list nav-hover">
                 <div class="account-details">
-                    <p class="nav-line-1">Hello, <%= user?'user':'Sign in' %></p>
+                    <p class="nav-line-1">Hello, <%= user?user.firstName:'Sign in' %></p>
                     <p class="nav-line-2">Account & List</p>
                 </div>
                 <img class="nav-arrow" draggable="false" src="/images/sort-down-solid.svg" alt="">
