@@ -8,8 +8,8 @@ const cookieParser = require('cookie-parser')
 
 const Product = require('./models/product/product.model');
 
-const searchItemsRoute = require('./routes/search/search.routes');
-const searchItemsApiRoute = require('./routes/search/search-api.router');
+const searchItemsRoute = require('./routes/search/search.route');
+const searchItemsApiRoute = require('./routes/search/search-api.route');
 const homeRoute = require('./routes/home/home.route');
 const registerRoute = require('./routes/register/register.route');
 const pageNotFoundRoute = require('./routes/page-not-found/page-not-found.route');
