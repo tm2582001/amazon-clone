@@ -1,40 +1,55 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcrypt");
+const Auth = require("../auth/auth.model");
 
 const userSchema = new Schema({
-  name: {
+  firstName: {
     type: String,
     required: true,
   },
+  lastName: String,
+
   mobileNumber: {
     type: Number,
     required: true,
+    unique: true,
   },
   email: {
     type: String,
-  },
-  password: {
-    type: String,
-    required: true,
-    select: false,
+    unique: true,
   },
 });
 
-const userExist = async function(mobileNumber){
-  const foundUser = await this.findOne({mobileNumber});
+const findUserByNumber = async function (mobileNumber) {
+  const foundUser = await this.findOne({ mobileNumber });
   console.log(foundUser);
   return foundUser;
-}
+};
 
-userSchema.static('userExist',userExist);
+const findUserByEmail = async function (email) {
+  const foundUser = await this.findOne({ email });
+  console.log(foundUser);
+  return foundUser;
+};
 
-// userSchema.statics.isValid = async function(){
-// }
+const createUser = async function (user) {
+  try {
+    const { firstName, lastName, email, password, mobileNumber } = user;
+    const newUser = await this.create({
+      firstName,
+      lastName,
+      email,
+      mobileNumber,
+    });
 
-userSchema.pre("save", async function(next) {
-    if(!this.isModified('password')) return next();
-    this.password = await bcrypt.hash(this.password,12);
-    next();
-});
+    await Auth.createAuth(newUser, password);
+    return newUser;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+userSchema.static("findUserByNumber", findUserByNumber);
+userSchema.static("findUserByEmail", findUserByEmail);
+userSchema.static("createUser", createUser);
 
 module.exports = model("User", userSchema);

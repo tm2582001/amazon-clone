@@ -1,4 +1,5 @@
 const User = require('../../models/user/user.model');
+const Auth = require('../../models/auth/auth.model');
 const ExpressError = require('../../utils/express-error/express-error.util');
 const signJwt = require('../../utils/jwt/sign-jwt.util');
 const validateEmail = require('../../utils/validate-email/validate-email.util');
@@ -17,15 +18,36 @@ const registerUser = async (req,res)=>{
 
     if(!password) throw new ExpressError('Password is required',400);
 
-    const isUser = await User.userExist(user.mobileNumber);
+    const isUser = await User.findUserByNumber(user.mobileNumber);
+
     if(isUser){
-        throw new ExpressError('Mobile Number alreay exist',400);
+        const isAuth = await Auth.findOne({id:isUser._id});
+        if(isAuth) throw new ExpressError('Mobile Number alreay exist',400);
     }
 
-    const newUser = new User(user);
-    await newUser.save();
+    let firstName = name.substring(0, name.indexOf(' '));
+    let lastName = name.substring(name.indexOf(' ') + 1);
+
+    if(!firstName){
+        firstName = lastName;
+        lastName = "";
+    }
+
+    const newUser = {
+        firstName,
+        lastName,
+        mobileNumber,
+        email,
+        password
+    }
+
+    if(isUser){
+        await Auth.createAuth(isUser,password);
+    }else{
+        await User.createUser(newUser);
+    }
     
-    const accessToken = signJwt({mobileNumber,email,name},'30m');
+    const accessToken = signJwt({mobileNumber,email,firstName,lastName},'30m');
     
     res.cookie("accessToken",accessToken,{
         maxAge: 300000,

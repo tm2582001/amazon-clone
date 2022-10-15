@@ -1,4 +1,4 @@
-const Product = require('../../models/product/product.models');
+const Product = require('../../models/product/product.model');
 
 const searchItems = async (req,res)=>{
     const {cat, search} = req.query;

@@ -6,18 +6,18 @@ const mongoose = require('mongoose');
 const app = express();
 const cookieParser = require('cookie-parser')
 
-const Product = require('./models/product/product.models');
+const Product = require('./models/product/product.model');
 
 const searchItemsRoute = require('./routes/search/search.routes');
 const searchItemsApiRoute = require('./routes/search/search-api.router');
-const homeRoute = require('./routes/home/home.routes');
-const registerRoute = require('./routes/register/register.routes');
-const pageNotFoundRoute = require('./routes/page-not-found/page-not-found.routes');
-const pageNotFoundApiRoute = require('./routes/page-not-found/page-not-found-api.routes');
+const homeRoute = require('./routes/home/home.route');
+const registerRoute = require('./routes/register/register.route');
+const pageNotFoundRoute = require('./routes/page-not-found/page-not-found.route');
+const pageNotFoundApiRoute = require('./routes/page-not-found/page-not-found-api.route');
 
-const catchError = require('./middleware/catch-error/cath-error.middleware');
-const deserializedUser = require('./middleware/deserialize-user/deserialize-user.middleware');
-const mapUser = require('./middleware/map-user/map-user.middleware');
+const catchError = require('./middlewares/catch-error/cath-error.middleware');
+const deserializedUser = require('./middlewares/deserialize-user/deserialize-user.middleware');
+const mapUser = require('./middlewares/map-user/map-user.middleware');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/amazonClone';
 mongoose.connect(dbUrl);

@@ -1,4 +1,4 @@
-const Product = require('../../models/product/product.models');
+const Product = require('../../models/product/product.model');
 const ExpressError = require('../../utils/express-error/express-error.util'); 
 
 const searchItemsApi = async(req,res)=>{
