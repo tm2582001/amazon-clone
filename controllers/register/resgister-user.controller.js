@@ -19,7 +19,7 @@ const registerUser = async (req,res)=>{
 
     const isUser = await User.userExist(user.mobileNumber);
     if(isUser){
-        throw new ExpressError('Mobile Number alreay exist',400);
+        throw new ExpressError('Mobile Number already exist',400);
     }
 
     const newUser = new User(user);
