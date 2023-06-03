@@ -20,7 +20,9 @@ const deserializedUser = require('./middlewares/deserialize-user/deserialize-use
 const mapUser = require('./middlewares/map-user/map-user.middleware');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/amazonClone';
-mongoose.connect(dbUrl);
+mongoose.connect(dbUrl,{
+  family: 4, // Use IPv4, skip trying IPv6  or we can use mongodb://127.0.0.1:27017/amazonClone this url
+});
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
