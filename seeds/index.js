@@ -1,3 +1,4 @@
+if(process.env.NODE_ENV!=="production") require('dotenv').config();
 const mongoose = require('mongoose');
 const productData = require('./data');
 const random = require('../utils/random/random.util');

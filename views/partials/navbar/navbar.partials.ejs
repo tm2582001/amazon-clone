@@ -29,7 +29,7 @@
                         </div>
                         <select class="search-options" name="cat" id="">
                              <option selected="selected" value="All Category">All Category</option>
-                            <% cat.map((cat)=>{ %>
+                            <% cat?.map((cat)=>{ %>
                             <option value="<%= cat %>" ><%= cat %> </option>
                             <% }) %>
                         </select>
