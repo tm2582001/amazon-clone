@@ -1,0 +1,35 @@
+<%- include('../../partials/boilerplate/upper.partials.ejs'); -%>
+<link rel="stylesheet" href="css/register/register.styles.css" />
+<div class="register-container">
+  <main>
+    <h1>Create Account</h1>
+    <form action="/register" method="post">
+      <div>
+        <label for="">Your Name</label>
+        <input type="text" name="user[name]" id="" />
+      </div>
+      <div>
+        <label for="">Mobile Number</label>
+        <span>
+          <input type="tel" name="user[mobileNumber]" id="" />
+        </span>
+      </div>
+      <div>
+        <label for="">Email (optional)</label>
+        <input type="email" name="user[email]" id="" />
+      </div>
+      <div>
+        <label for="">Password</label>
+        <input type="password" name="user[password]" id="" />
+      </div>
+      <div><i>i</i> <span>Passwords must be at least 6 characters.</span></div>
+      <p>
+        By enrolling your mobile phone number, you consent to receive automated
+        security notifications via text message from Amazon. Message and data
+        rates may apply.
+      </p>
+      <button type="submit">Continue</button>
+    </form>
+  </main>
+</div>
+<%- include('../../partials/boilerplate/lower.partials.ejs'); -%>

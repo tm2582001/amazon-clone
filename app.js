@@ -12,6 +12,7 @@ const searchItemsRoute = require('./routes/search/search.route');
 const searchItemsApiRoute = require('./routes/search/search-api.route');
 const homeRoute = require('./routes/home/home.route');
 const registerRoute = require('./routes/register/register.route');
+const signInRoute = require('./routes/sign-in/sign-in.route');
 const pageNotFoundRoute = require('./routes/page-not-found/page-not-found.route');
 const pageNotFoundApiRoute = require('./routes/page-not-found/page-not-found-api.route');
 
@@ -57,6 +58,8 @@ app.use('/',homeRoute);
 app.use('/search',searchItemsRoute);
 
 app.use('/register', registerRoute);
+
+app.use('/signin', signInRoute);
 
 app.use('/api/search',searchItemsApiRoute);
 

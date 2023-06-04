@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const createAuth = require('../../services/auth/create-auth.service');
+const verifyAuth = require("../../services/auth/verify-auth.service");
 
 const authSchema = new Schema({
     id:{
@@ -17,6 +18,7 @@ const authSchema = new Schema({
 
 
 authSchema.static('createAuth',createAuth);
+authSchema.static('verifyAuth', verifyAuth);
 
 
 // another way of hashing password

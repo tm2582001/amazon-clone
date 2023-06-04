@@ -1,0 +1,15 @@
+<%- include('../../partials/boilerplate/upper.partials.ejs'); -%>
+<div>
+    <main>
+        <h1>Sign in</h1>
+        <form action="/signin" method="post">
+            <div>
+                <label for="">Email or mobile phone number</label>
+                <input type="text" name="signInId" id="" />
+              </div>
+              <button type="submit">Continue</button>
+              <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+        </form>
+    </main>
+</div>
+<%- include('../../partials/boilerplate/lower.partials.ejs'); -%>

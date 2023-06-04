@@ -5,7 +5,7 @@ const createAuth = async function(user,password){
     const newAuth = new this({
         id:user,
         password: hashPassword
-    }) ;
+    });
     await newAuth.save();
 }
 

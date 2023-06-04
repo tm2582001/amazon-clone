@@ -1,5 +1,5 @@
 const renderRegister = (req,res)=>{
-    res.render('register/register');
+    res.render('pages/register/register');
 }
 
 module.exports = renderRegister;
