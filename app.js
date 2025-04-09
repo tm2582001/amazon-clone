@@ -3,8 +3,9 @@ if(process.env.NODE_ENV!=="production") require('dotenv').config();
 const express = require("express");
 const path = require('path');
 const mongoose = require('mongoose');
-const app = express();
 const cookieParser = require('cookie-parser')
+
+const app = express();
 
 const Product = require('./models/product/product.model');
 
@@ -63,9 +64,9 @@ app.use('/signin', signInRoute);
 
 app.use('/api/search',searchItemsApiRoute);
 
-app.use('/api/*',pageNotFoundApiRoute);
+app.use('/api/*apiNotFound',pageNotFoundApiRoute);
 
-app.use('*',pageNotFoundRoute);
+app.use('*pageNotFound',pageNotFoundRoute);
 
 app.use(catchError);
 
